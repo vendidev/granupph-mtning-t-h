@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { TreePine, CheckCircle2 } from "lucide-react";
@@ -18,6 +19,9 @@ const bookingSchema = z.object({
   pickupDate: z.string({ required_error: "Vänligen välj ett datum" }),
   timePreference: z.string().trim().min(1, { message: "Vänligen ange vilken tid som passar dig" }).max(100),
   additionalInfo: z.string().max(500).optional(),
+  confirmPayment: z.boolean().refine((val) => val === true, {
+    message: "Du måste bekräfta att betalning sker senast vid upphämtning",
+  }),
 });
 
 type BookingFormData = z.infer<typeof bookingSchema>;
@@ -42,6 +46,7 @@ const BookingForm = () => {
       pickupDate: "",
       timePreference: "",
       additionalInfo: "",
+      confirmPayment: false,
     },
   });
 
@@ -182,6 +187,27 @@ const BookingForm = () => {
                 />
               </FormControl>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="confirmPayment"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-lg border border-border p-4">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="cursor-pointer">
+                  Jag bekräftar att betalning sker senast vid upphämtning *
+                </FormLabel>
+                <FormMessage />
+              </div>
             </FormItem>
           )}
         />
