@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import BookingForm from "@/components/BookingForm";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -8,7 +9,7 @@ const Index = () => {
       <HeroSection />
 
       {/* Booking Section */}
-      <section className="flex-1 py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-10">
@@ -26,6 +27,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <FAQSection />
 
       <Footer />
     </main>

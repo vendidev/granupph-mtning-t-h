@@ -26,15 +26,8 @@ const HeroSection = () => {
         </p>
       </div>
 
-      {/* Decorative bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path
-            d="M0 80V40C240 10 480 0 720 10C960 20 1200 50 1440 40V80H0Z"
-            fill="hsl(var(--background))"
-          />
-        </svg>
-      </div>
+      {/* Decorative bottom edge */}
+      <div className="absolute bottom-0 left-0 right-0 h-4 bg-background" />
     </section>
   );
 };
