@@ -2,15 +2,15 @@ import heroImage from "@/assets/hero-team.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[45vh] md:min-h-[50vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Snötäckt vinterskog"
-          className="w-full h-full object-cover"
+          alt="Teamet som hämtar granar"
+          className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest/60 via-forest/50 to-forest/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest/50 via-forest/40 to-forest/70" />
       </div>
 
       {/* Content */}
