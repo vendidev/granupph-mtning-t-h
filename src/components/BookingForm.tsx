@@ -27,10 +27,9 @@ const bookingSchema = z.object({
 type BookingFormData = z.infer<typeof bookingSchema>;
 
 const pickupDates = [
-  { value: "2025-01-11", label: "Lördag 11 januari" },
-  { value: "2025-01-12", label: "Söndag 12 januari" },
-  { value: "2025-01-18", label: "Lördag 18 januari" },
-  { value: "2025-01-19", label: "Söndag 19 januari" },
+  { value: "2025-01-02", label: "Fredag 2 januari" },
+  { value: "2025-01-10", label: "Lördag 10 januari" },
+  { value: "2025-01-17", label: "Lördag 17 januari" },
 ];
 
 const BookingForm = () => {
