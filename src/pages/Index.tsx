@@ -14,7 +14,7 @@ const Index = () => {
               <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground mb-3">
                 Boka via formuläret
               </h2>
-              <p className="text-foreground text-base mb-4">Fyll i dina uppgifter nedan för att boka och betala senast vid upphämtningen.</p>
+              <p className="text-foreground text-base mb-4">Fyll i dina uppgifter nedan för att boka, och betala senast vid upphämtningen.</p>
               <div className="bg-primary text-primary-foreground rounded-lg px-6 py-3 inline-block">
                 <p className="text-lg md:text-xl font-semibold">Pris: 99 kr/gran</p>
               </div>
