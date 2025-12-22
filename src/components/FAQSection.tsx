@@ -37,7 +37,7 @@ const FAQSection = () => {
             Vanliga frågor
           </h2>
           
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-3 mb-8">
             {faqItems.map((item, index) => (
               <AccordionItem
                 key={index}
@@ -53,6 +53,12 @@ const FAQSection = () => {
               </AccordionItem>
             ))}
           </Accordion>
+          
+          <div className="text-center">
+            <div className="bg-primary text-primary-foreground rounded-lg px-6 py-3 inline-block">
+              <p className="text-base md:text-lg font-semibold">Vid frågor, skicka ett sms till: <br /> 073-852 30 62</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

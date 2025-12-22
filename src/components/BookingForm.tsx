@@ -298,9 +298,9 @@ const BookingForm = () => {
           )}
         />
 
-        <div className="bg-muted/50 rounded-lg p-4 text-sm text-muted-foreground">
+        <div className="bg-muted/50 rounded-lg p-4 text-sm text-foreground">
           <p className="font-medium text-foreground mb-1">GDPR-information</p>
-          <p>
+          <p className="text-foreground">
             Vi följer dataskyddsförordningen (GDPR) för att säkerställa att dina personuppgifter 
             hanteras på ett tryggt och säkert sätt. All information kommer att raderas i samband 
             med att granupphämtningen avslutats.

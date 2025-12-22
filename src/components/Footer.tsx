@@ -10,8 +10,8 @@ const Footer = () => {
             <span className="font-serif text-xl font-semibold">Granupphämtning i Trollhättan</span>
           </div>
           <p className="text-primary-foreground/80 max-w-md mb-6">
-            Vi hjälper dig att bli av med julgranen på ett miljövänligt sätt. 
-            Alla granar återvinns lokalt.
+            Vi hämtar din julgran och kör den till återvinningen i Trollhättan för endast 99 kr per gran. 
+            Vi ser framemot att få hämta just din! <br /> <br /> / Alfons och Alexander
           </p>
           <div className="text-sm text-primary-foreground/60">
             © {new Date().getFullYear()} Granupphämtning i Trollhättan. Alla rättigheter förbehållna.
