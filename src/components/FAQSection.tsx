@@ -7,28 +7,24 @@ import {
 
 const faqItems = [
   {
-    question: "Vad kostar det att få granen hämtad?",
-    answer: "Priset beror på granens storlek. Kontakta oss för prisuppgifter. Betalning sker enkelt vid upphämtningen.",
+    question: "Är ni företag?",
+    answer: "Nej, vi är inte ett registrerat företag utan två privatpersoner som gör detta på vår fritid eftersom vi själva saknade en motsvarande tjänst. Alla intäkter tas därför upp i våra egna deklarationer.",
   },
   {
-    question: "Vilka områden hämtar ni ifrån?",
-    answer: "Vi hämtar granar inom hela Trollhättans kommun. Om du är osäker på om vi hämtar från din adress, ange den i formuläret så hör vi av oss.",
+    question: "Hur mycket kostar en upphämtningen?",
+    answer: "En granupphämtning kostar 100 kr per gran.",
   },
   {
-    question: "Hur ska jag förbereda granen för upphämtning?",
-    answer: "Ställ granen utanför vid en lättillgänglig plats, t.ex. vid garageuppfarten eller entrén. Ta gärna bort eventuella dekorationer i förväg.",
+    question: "Hur förbereder jag inför upphämtningen?",
+    answer: "Ta bort allt pynt från granen och placera den antingen vid din tomtgräns eller i anslutning till din lägenhet. Om du önskar få din gran upphämtad i hemmet ska det uppges i bokningsformuläret.",
   },
   {
-    question: "Måste jag vara hemma vid upphämtningen?",
-    answer: "Nej, du behöver inte vara hemma. Ställ bara ut granen på överenskommen plats. Om betalning inte skett i förväg måste dock någon kunna ta emot oss.",
+    question: "Hur och när betalar jag?",
+    answer: "Betalning sker senast i samband med upphämtningen och görs via Swish.",
   },
   {
-    question: "Vad händer med granarna efter upphämtning?",
-    answer: "Alla granar återvinns på ett miljövänligt sätt. De flisas och används som bränsle eller kompost.",
-  },
-  {
-    question: "Kan ni hämta flera granar samtidigt?",
-    answer: "Ja absolut! Ange bara antalet granar i formuläret under 'Annan information'.",
+    question: "Måste jag vara hemma under upphämtningen?",
+    answer: "Nej, ställ ut granen så fixar vi resten.",
   },
 ];
 
