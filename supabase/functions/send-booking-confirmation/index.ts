@@ -15,22 +15,40 @@ interface BookingData {
   additional_info?: string;
 }
 
+// CORS headers helper
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
 serve(async (req) => {
   try {
     // Log request method and headers for debugging
     console.log("Request method:", req.method);
     console.log("Content-Type:", req.headers.get("content-type"));
+    console.log("URL:", req.url);
     
-    // Handle different HTTP methods
+    // Handle CORS preflight
     if (req.method === "OPTIONS") {
       return new Response(null, {
         status: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
+        headers: corsHeaders,
       });
+    }
+
+    // Only handle POST requests
+    if (req.method !== "POST") {
+      return new Response(
+        JSON.stringify({ error: "Method not allowed" }),
+        { 
+          status: 405, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders,
+          } 
+        }
+      );
     }
 
     // Get the booking data from the request
@@ -39,29 +57,67 @@ serve(async (req) => {
       // Try to get body as text first
       const bodyText = await req.text();
       console.log("Body text length:", bodyText?.length || 0);
+      console.log("Body text preview:", bodyText?.substring(0, 200));
       
       if (!bodyText || bodyText.trim() === "") {
         console.error("Empty request body");
         return new Response(
           JSON.stringify({ error: "Request body is empty" }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          { 
+            status: 400, 
+            headers: { 
+              "Content-Type": "application/json",
+              ...corsHeaders,
+            } 
+          }
         );
       }
       
       booking = JSON.parse(bodyText);
-      console.log("Parsed booking data:", { email: booking.email, name: booking.name });
+      console.log("Parsed booking data:", { 
+        email: booking.email, 
+        name: booking.name,
+        pickup_date: booking.pickup_date 
+      });
     } catch (parseError) {
       console.error("JSON parse error:", parseError);
       return new Response(
         JSON.stringify({ error: "Invalid JSON in request body", details: parseError.message }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
+        { 
+          status: 400, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders,
+          } 
+        }
       );
     }
 
-    if (!booking.email || !RESEND_API_KEY) {
+    if (!booking.email) {
+      console.error("Missing email in booking data");
       return new Response(
-        JSON.stringify({ error: "Missing email or Resend API key" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
+        JSON.stringify({ error: "Missing email in booking data" }),
+        { 
+          status: 400, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders,
+          } 
+        }
+      );
+    }
+
+    if (!RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not set");
+      return new Response(
+        JSON.stringify({ error: "Resend API key is not configured" }),
+        { 
+          status: 500, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders,
+          } 
+        }
       );
     }
 
@@ -171,13 +227,25 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify({ success: true, messageId: result.id }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      { 
+        status: 200, 
+        headers: { 
+          "Content-Type": "application/json",
+          ...corsHeaders,
+        } 
+      }
     );
   } catch (error) {
     console.error("Error in send-booking-confirmation:", error);
     return new Response(
       JSON.stringify({ error: error.message }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      { 
+        status: 500, 
+        headers: { 
+          "Content-Type": "application/json",
+          ...corsHeaders,
+        } 
+      }
     );
   }
 });
