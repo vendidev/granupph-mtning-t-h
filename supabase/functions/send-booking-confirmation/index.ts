@@ -302,7 +302,7 @@ serve(async (req) => {
               
               <div class="thank-you-section">
                 <h2>Tack för din bokning!</h2>
-                <p>Vi ser framemot att hämta din gran!</p>
+                <p>Vi ser fram emot att hämta din gran!</p>
               </div>
               
               <div class="payment-section">

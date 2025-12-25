@@ -147,7 +147,7 @@ const BookingForm = () => {
             Tack för din bokning!
           </h3>
           <p className="text-lg md:text-xl text-foreground mb-4 max-w-md mx-auto">
-            Vi ser framemot att hämta din gran!
+            Vi ser fram emot att hämta din gran!
           </p>
           <p className="text-lg md:text-xl text-foreground mb-8 max-w-md mx-auto">
             För att underlätta vid upphämtningen går det bra att betala nu till Alexander Foxér Eriksson
@@ -232,7 +232,7 @@ const BookingForm = () => {
             <FormItem>
               <FormLabel>Bostadsadress (i Trollhättans kommun) *</FormLabel>
               <FormControl>
-                <Input placeholder="Gatuadress, postnummer, ort" {...field} />
+                <Input placeholder="Gatuadress" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
