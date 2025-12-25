@@ -19,18 +19,22 @@ interface BookingData {
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, apikey",
+  "Access-Control-Max-Age": "86400",
 };
 
 serve(async (req) => {
   try {
     // Log request method and headers for debugging
+    console.log("=== NEW REQUEST ===");
     console.log("Request method:", req.method);
     console.log("Content-Type:", req.headers.get("content-type"));
     console.log("URL:", req.url);
+    console.log("All headers:", Object.fromEntries(req.headers.entries()));
     
     // Handle CORS preflight
     if (req.method === "OPTIONS") {
+      console.log("Handling OPTIONS preflight");
       return new Response(null, {
         status: 200,
         headers: corsHeaders,
@@ -39,8 +43,9 @@ serve(async (req) => {
 
     // Only handle POST requests
     if (req.method !== "POST") {
+      console.log("Method not allowed:", req.method);
       return new Response(
-        JSON.stringify({ error: "Method not allowed" }),
+        JSON.stringify({ error: "Method not allowed", received: req.method }),
         { 
           status: 405, 
           headers: { 
@@ -50,6 +55,8 @@ serve(async (req) => {
         }
       );
     }
+
+    console.log("Processing POST request");
 
     // Get the booking data from the request
     let booking: BookingData;

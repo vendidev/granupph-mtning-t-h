@@ -92,16 +92,26 @@ const BookingForm = () => {
         
         console.log('Invoking send-booking-confirmation with payload:', emailPayload);
         
-        const { data: emailData, error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
-          body: emailPayload,
+        // Use fetch directly to ensure POST request is sent
+        const functionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-booking-confirmation`;
+        const response = await fetch(functionUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY || '',
+          },
+          body: JSON.stringify(emailPayload),
         });
-        
-        if (emailError) {
-          console.error('Error sending confirmation email:', emailError);
-          console.error('Error details:', JSON.stringify(emailError, null, 2));
-        } else {
-          console.log('Confirmation email sent successfully:', emailData);
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Error sending confirmation email:', response.status, errorText);
+          throw new Error(`Failed to send email: ${response.status} ${errorText}`);
         }
+
+        const emailData = await response.json();
+        console.log('Confirmation email sent successfully:', emailData);
       } catch (emailError) {
         // Log email error but don't fail the booking
         console.error('Exception sending confirmation email:', emailError);
