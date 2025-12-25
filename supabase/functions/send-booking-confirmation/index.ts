@@ -58,8 +58,20 @@ serve(async (req) => {
             </div>
             <div class="content">
               <p>Hej ${booking.name},</p>
-              <p>Vi har mottagit din bokning för granupphämtning. Här är en sammanfattning:</p>
               
+              <h2 style="color: #2d5016; margin-top: 20px; margin-bottom: 15px;">Tack för din bokning!</h2>
+              
+              <p>Vi ser framemot att hämta din gran!</p>
+              
+              <p style="margin-top: 20px; margin-bottom: 10px;"><strong>För att underlätta vid upphämtningen går det bra att betala nu till Alexander Foxér Eriksson</strong></p>
+              
+              <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                <p style="margin: 0;"><strong>Betala med Swish:</strong></p>
+                <p style="margin: 5px 0; font-size: 18px;"><strong>073-852 30 62</strong></p>
+                <p style="margin: 5px 0;">Swish-nummer: <strong>@swish-alex</strong></p>
+              </div>
+              
+              <p style="margin-top: 20px;"><strong>Din bokning:</strong></p>
               <div class="info-row">
                 <span class="label">Datum:</span> ${pickupDate}
               </div>
@@ -75,17 +87,7 @@ serve(async (req) => {
               </div>
               ` : ''}
               
-              <p style="margin-top: 20px;">
-                <strong>För att underlätta vid upphämtningen går det bra att betala nu till Alexander Foxér Eriksson</strong>
-              </p>
-              <p>
-                Betala med Swish till: <strong>073-852 30 62</strong><br>
-                Swish-nummer: <strong>@swish-alex</strong>
-              </p>
-              
-              <p>Vi ser framemot att hämta din gran!</p>
-              
-              <p>Med vänliga hälsningar,<br>Granupphämtning i Trollhättan</p>
+              <p style="margin-top: 30px;">Med vänliga hälsningar,<br><strong>Granupphämtning i Trollhättan</strong></p>
             </div>
             <div class="footer">
               <p>Detta är ett automatiskt meddelande. Vänligen svara inte på detta e-post.</p>

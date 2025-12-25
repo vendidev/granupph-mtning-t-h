@@ -12,7 +12,7 @@ const faqItems = [
   },
   {
     question: "Hur mycket kostar en upphämtningen?",
-    answer: "En granupphämtning kostar 100 kr per gran.",
+    answer: "En granupphämtning kostar 99 kr per gran.",
   },
   {
     question: "Hur förbereder jag inför upphämtningen?",
