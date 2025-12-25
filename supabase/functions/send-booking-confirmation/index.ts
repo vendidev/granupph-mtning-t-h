@@ -142,53 +142,204 @@ serve(async (req) => {
       <html>
         <head>
           <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background-color: #2d5016; color: white; padding: 20px; text-align: center; }
-            .content { background-color: #f9f9f9; padding: 20px; margin: 20px 0; }
-            .info-row { margin: 10px 0; }
-            .label { font-weight: bold; }
-            .footer { text-align: center; color: #666; font-size: 12px; margin-top: 20px; }
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { 
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              line-height: 1.6; 
+              color: #333; 
+              background-color: #f5f5f5;
+              padding: 20px;
+            }
+            .email-container { 
+              max-width: 600px; 
+              margin: 0 auto; 
+              background-color: #ffffff;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            .header { 
+              background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+              color: white; 
+              padding: 40px 30px; 
+              text-align: center; 
+            }
+            .header h1 {
+              font-size: 28px;
+              font-weight: 600;
+              margin: 0;
+              letter-spacing: 0.5px;
+            }
+            .content { 
+              padding: 40px 30px; 
+            }
+            .greeting {
+              font-size: 18px;
+              color: #2d5016;
+              margin-bottom: 20px;
+              font-weight: 500;
+            }
+            .thank-you-section {
+              background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+              padding: 25px;
+              border-radius: 10px;
+              margin: 25px 0;
+              text-align: center;
+              border-left: 4px solid #2d5016;
+            }
+            .thank-you-section h2 {
+              color: #2d5016;
+              font-size: 24px;
+              margin-bottom: 10px;
+              font-weight: 600;
+            }
+            .thank-you-section p {
+              color: #1b5e20;
+              font-size: 16px;
+              margin: 0;
+            }
+            .payment-section {
+              background-color: #fff9e6;
+              border: 2px solid #ffd54f;
+              padding: 25px;
+              border-radius: 10px;
+              margin: 30px 0;
+            }
+            .payment-section h3 {
+              color: #2d5016;
+              font-size: 18px;
+              margin-bottom: 15px;
+              font-weight: 600;
+            }
+            .swish-box {
+              background-color: #ffffff;
+              border: 2px solid #2d5016;
+              border-radius: 8px;
+              padding: 20px;
+              text-align: center;
+              margin-top: 15px;
+            }
+            .swish-label {
+              color: #666;
+              font-size: 14px;
+              margin-bottom: 8px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+            }
+            .swish-number {
+              color: #2d5016;
+              font-size: 32px;
+              font-weight: 700;
+              margin: 10px 0;
+              letter-spacing: 2px;
+            }
+            .booking-details {
+              background-color: #f9f9f9;
+              border-radius: 10px;
+              padding: 25px;
+              margin: 30px 0;
+            }
+            .booking-details h3 {
+              color: #2d5016;
+              font-size: 18px;
+              margin-bottom: 20px;
+              font-weight: 600;
+              border-bottom: 2px solid #2d5016;
+              padding-bottom: 10px;
+            }
+            .info-row { 
+              margin: 15px 0; 
+              padding: 10px 0;
+              border-bottom: 1px solid #e0e0e0;
+            }
+            .info-row:last-child {
+              border-bottom: none;
+            }
+            .label { 
+              font-weight: 600; 
+              color: #2d5016;
+              display: inline-block;
+              min-width: 120px;
+            }
+            .value {
+              color: #333;
+            }
+            .signature {
+              margin-top: 40px;
+              padding-top: 30px;
+              border-top: 2px solid #e0e0e0;
+            }
+            .signature p {
+              color: #2d5016;
+              font-size: 16px;
+              margin: 5px 0;
+            }
+            .footer { 
+              background-color: #f5f5f5;
+              text-align: center; 
+              color: #666; 
+              font-size: 12px; 
+              padding: 20px 30px;
+              border-top: 1px solid #e0e0e0;
+            }
+            @media only screen and (max-width: 600px) {
+              body { padding: 10px; }
+              .content { padding: 25px 20px; }
+              .header { padding: 30px 20px; }
+              .swish-number { font-size: 24px; }
+            }
           </style>
         </head>
         <body>
-          <div class="container">
+          <div class="email-container">
             <div class="header">
-              <h1>Tack för din bokning!</h1>
+              <h1>🌲 Tack för din bokning!</h1>
             </div>
             <div class="content">
-              <p>Hej ${booking.name},</p>
+              <p class="greeting">Hej ${booking.name}!</p>
               
-              <h2 style="color: #2d5016; margin-top: 20px; margin-bottom: 15px;">Tack för din bokning!</h2>
-              
-              <p>Vi ser framemot att hämta din gran!</p>
-              
-              <p style="margin-top: 20px; margin-bottom: 10px;"><strong>För att underlätta vid upphämtningen går det bra att betala nu till Alexander Foxér Eriksson</strong></p>
-              
-              <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                <p style="margin: 0;"><strong>Betala med Swish:</strong></p>
-                <p style="margin: 5px 0; font-size: 18px;"><strong>073-852 30 62</strong></p>
-                <p style="margin: 5px 0;">Swish-nummer: <strong>@swish-alex</strong></p>
+              <div class="thank-you-section">
+                <h2>Tack för din bokning!</h2>
+                <p>Vi ser framemot att hämta din gran!</p>
               </div>
               
-              <p style="margin-top: 20px;"><strong>Din bokning:</strong></p>
-              <div class="info-row">
-                <span class="label">Datum:</span> ${pickupDate}
+              <div class="payment-section">
+                <h3>💳 Betalning</h3>
+                <p style="color: #333; margin-bottom: 15px;">För att underlätta vid upphämtningen går det bra att betala nu till Alexander Foxér Eriksson</p>
+                <div class="swish-box">
+                  <div class="swish-label">Betala med Swish</div>
+                  <div class="swish-number">073-852 30 62</div>
+                </div>
               </div>
-              <div class="info-row">
-                <span class="label">Tid:</span> ${booking.time_preference}
-              </div>
-              <div class="info-row">
-                <span class="label">Adress:</span> ${booking.address}
-              </div>
-              ${booking.additional_info ? `
-              <div class="info-row">
-                <span class="label">Övrig information:</span> ${booking.additional_info}
-              </div>
-              ` : ''}
               
-              <p style="margin-top: 30px;">Med vänliga hälsningar,<br><strong>Granupphämtning i Trollhättan</strong></p>
+              <div class="booking-details">
+                <h3>📅 Din bokning</h3>
+                <div class="info-row">
+                  <span class="label">Datum:</span>
+                  <span class="value">${pickupDate}</span>
+                </div>
+                <div class="info-row">
+                  <span class="label">Tid:</span>
+                  <span class="value">${booking.time_preference}</span>
+                </div>
+                <div class="info-row">
+                  <span class="label">Adress:</span>
+                  <span class="value">${booking.address}</span>
+                </div>
+                ${booking.additional_info ? `
+                <div class="info-row">
+                  <span class="label">Övrig info:</span>
+                  <span class="value">${booking.additional_info}</span>
+                </div>
+                ` : ''}
+              </div>
+              
+              <div class="signature">
+                <p><strong>Med vänliga hälsningar,</strong></p>
+                <p style="color: #2d5016; font-weight: 600;">Granupphämtning i Trollhättan</p>
+              </div>
             </div>
             <div class="footer">
               <p>Detta är ett automatiskt meddelande. Vänligen svara inte på detta e-post.</p>
