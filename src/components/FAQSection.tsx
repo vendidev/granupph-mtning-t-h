@@ -55,8 +55,16 @@ const FAQSection = () => {
           </Accordion>
           
           <div className="text-center">
+            <h3 className="text-lg md:text-xl font-serif font-semibold text-foreground mb-4">
+              Vid frågor, skicka ett sms till:
+            </h3>
             <div className="bg-primary text-primary-foreground rounded-lg px-6 py-3 inline-block">
-              <p className="text-base md:text-lg font-semibold">Vid frågor, skicka ett sms till: <br /> 073-852 30 62</p>
+              <a 
+                href="sms:+46738523062"
+                className="text-base md:text-lg font-semibold underline decoration-2 underline-offset-2 hover:opacity-80 hover:decoration-4 transition-all cursor-pointer"
+              >
+                073-852 30 62
+              </a>
             </div>
           </div>
         </div>
