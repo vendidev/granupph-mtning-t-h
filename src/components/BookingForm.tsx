@@ -271,7 +271,7 @@ const BookingForm = () => {
               {field.value === "2025-01-02" && (
                 <div className="mt-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
                   <p className="text-sm text-foreground font-medium">
-                    ⚠️ Viktigt: Upphämtning sker i eftermiddag/kväll (idag den 2 januari). Se till att din gran är redo för upphämtning.
+                  ⚠️ Viktigt: Upphämtning sker i eftermiddag eller ikväll (idag, 2 januari). Se till att granen står redo för upphämtning.
                   </p>
                 </div>
               )}
